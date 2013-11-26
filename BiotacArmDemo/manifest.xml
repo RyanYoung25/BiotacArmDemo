@@ -1,0 +1,16 @@
+<package>
+  <description brief="BiotacArmDemo">
+
+     BiotacArmDemo
+
+  </description>
+  <author>Ryan</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/BiotacArmDemo</url>
+  <depend package="maestro"/>
+  <depend package="biotac_sensors"/>
+
+</package>
+
+
