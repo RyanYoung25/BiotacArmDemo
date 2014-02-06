@@ -12,6 +12,8 @@ import rospy
 import time
 from hubomsg.msg import *
 from biotac_sensors.msg import *
+
+ID_NUM = 7
 '''
 This is a demo class. It basically when created will handle
 the demo. Every time it gets a biotac_pub message it goes through
@@ -24,7 +26,7 @@ class demo:
         self.MAX = 1
         rospy.init_node("BioTacDemo")
         rospy.Subscriber("biotac_pub", BioTacHand, self.update)
-        self.pub = rospy.Publisher("Maestro/Control", PythonMessage)
+        self.pub = rospy.Publisher("Maestro/Control", MaestroCommand)
         self.count = 0
         rospy.spin()
     
@@ -45,7 +47,7 @@ class demo:
         self.count += 1                         
         if self.count == 10: 
             self.count = 0
-            self.pub.publish("REP", "position", str(pos), "")
+            self.pub.publish("REP", "position", str(pos), "", ID_NUM)
 
 
     
