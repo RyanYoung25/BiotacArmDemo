@@ -29,7 +29,7 @@ class demo:
         rospy.Subscriber("biotac_pub", BioTacHand, self.update)
         self.pub = rospy.Publisher("Maestro/Control", MaestroCommand)
         self.count = 0
-        rospy.on_shutdown(exit)
+        rospy.on_shutdown(self.exit)
         rospy.spin()
     
     '''
