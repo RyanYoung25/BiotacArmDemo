@@ -10,6 +10,7 @@ Author: Ryan
 import roslib; roslib.load_manifest('BiotacArmDemo')
 import rospy
 import time
+import sys
 from hubomsg.msg import *
 from biotac_sensors.msg import *
 
@@ -28,6 +29,7 @@ class demo:
         rospy.Subscriber("biotac_pub", BioTacHand, self.update)
         self.pub = rospy.Publisher("Maestro/Control", MaestroCommand)
         self.count = 0
+        rospy.on_shutdown(exit)
         rospy.spin()
     
     '''
@@ -48,6 +50,10 @@ class demo:
         if self.count == 10: 
             self.count = 0
             self.pub.publish("REP", "position", str(pos), "", ID_NUM)
+
+    def exit(self):
+        self.pub.publish("REP", "position", "0", "", ID_NUM)
+        sys.exit()
 
 
     
