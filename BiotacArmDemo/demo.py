@@ -53,7 +53,7 @@ class demo:
 
     def exit(self):
         self.pub.publish("REP", "position", "0", "", ID_NUM)
-        sys.exit()
+        
 
 
     
